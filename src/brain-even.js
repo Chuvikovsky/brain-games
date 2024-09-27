@@ -1,35 +1,27 @@
-import readlineSync from 'readline-sync';
-
-const getUserAnswer = (question) => {
-  const userName = readlineSync.question(question);
-  return userName;
-};
-
-const generateRandomNumber = () => Math.floor(Math.random() * 100 + 1);
-
-const isEven = (number) => number % 2 === 0;
+import {
+  showIntroduction,
+  showCongratulation,
+  generateRandomNumber,
+  getUserAnswer,
+  numberQuestions,
+  isEven,
+} from './index.js';
 
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = getUserAnswer('May I have your name? ');
-  console.log(`Hello, ${userName}`);
+  showIntroduction();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   let countCorrectAnswers = 0;
-
-  while (true) {
+  do {
     const number = generateRandomNumber();
-    console.log(`Question: ${number} `);
+    const answer = isEven(number) ? 'yes' : 'no';
+    console.log(`Questions: ${number}`);
     const userAnswer = getUserAnswer('Your answer: ');
-    const correctAnswer = isEven(number) ? 'yes' : 'no';
-    if (userAnswer === correctAnswer) {
+    if (userAnswer === answer) {
       countCorrectAnswers += 1;
       console.log('Correct!');
-      if (countCorrectAnswers === 3) {
-        console.log(`Congratulations, ${userName}!`);
-        break;
-      }
     } else {
-      break;
+      return;
     }
-  }
+  } while (countCorrectAnswers < numberQuestions);
+  showCongratulation();
 };
