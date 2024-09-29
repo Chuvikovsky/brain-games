@@ -1,4 +1,4 @@
-import { app, generateRandomNumber } from './index.js';
+import { app, generateRandomNumber } from '../index.js';
 
 const createQuestion = () => {
   const mathSigns = ['+', '-', '*'];

@@ -1,4 +1,4 @@
-import { generateRandomNumber, app } from './index.js';
+import { generateRandomNumber, app } from '../index.js';
 
 const isEven = (number) => number % 2 === 0;
 
