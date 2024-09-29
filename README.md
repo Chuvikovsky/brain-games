@@ -3,4 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d231df47d8d6a9fd0bba/maintainability)](https://codeclimate.com/github/Chuvikovsky/frontend-project-44/maintainability)
 
 [brain-even asciinema](https://asciinema.org/a/NHRht1sdzQhB0fOCplSz8cx73)
-
+[brain-calc asciinema](https://asciinema.org/a/mOel8pto4SCQDeYSYCLDY5lXr)
