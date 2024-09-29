@@ -1,28 +1,42 @@
-import {
-  showIntroduction,
-  showCongratulation,
-  getUserAnswer,
-  numberQuestions,
-  showWrongAnswerCalc,
-  generateEquation,
-} from './index.js';
+import { app, generateRandomNumber } from './index.js';
+
+const createQuestion = () => {
+  const mathSigns = ['+', '-', '*'];
+  const symbol = mathSigns[generateRandomNumber({ maxValue: 3, shift: 0 })];
+  let num1 = 0;
+  let num2 = 0;
+  let result = 0;
+  switch (symbol) {
+    case '+':
+      num1 = generateRandomNumber();
+      num2 = generateRandomNumber();
+      result = num1 + num2;
+      break;
+    case '-':
+      num1 = generateRandomNumber();
+      num2 = generateRandomNumber({ maxValue: num1 });
+      result = num1 - num2;
+      break;
+    case '*':
+      num1 = generateRandomNumber({ maxValue: 50 });
+      num2 = generateRandomNumber({ maxValue: 10 });
+      result = num1 * num2;
+      break;
+    default:
+      num1 = generateRandomNumber();
+      num2 = generateRandomNumber();
+      result = num1 + num2;
+      break;
+  }
+  return [`${num1} ${symbol} ${num2}`, result.toString()];
+};
 
 export default () => {
-  showIntroduction();
-  console.log('What is the result of the expression?');
-  let countCorrectAnswers = 0;
-  do {
-    const [equation, answer] = generateEquation();
-    console.log(`Question: ${equation}`);
-    const userAnswer = getUserAnswer('Your answer: ');
-    if (userAnswer === answer) {
-      console.log('Correct!');
-      countCorrectAnswers += 1;
-    } else {
-      showWrongAnswerCalc(userAnswer, answer);
-      return;
-    }
-  } while (countCorrectAnswers < numberQuestions);
-
-  showCongratulation();
+  app({
+    description: 'What is the result of the expression?',
+    generateQuestion: createQuestion,
+    incorrectAnswer: `'<USER_ANSWER>' is wrong answer ;(. Correct answer was '<ANSWER>'.
+Let's try again, <NAME>!`,
+    congratulation: 'Congratulations, <NAME>!',
+  });
 };

@@ -1,65 +1,40 @@
 import readlineSync from 'readline-sync';
 
-let userName;
-
-export const getUserAnswer = (question) => {
-  const userAnswer = readlineSync.question(question);
-  return userAnswer;
-};
-
-export const numberQuestions = 3;
+const numberOfQuestions = 3;
 
 export const generateRandomNumber = ({ maxValue = 100, shift = 1 } = {}) => {
   const result = Math.floor(Math.random() * maxValue + shift);
   return result;
 };
 
-export const showIntroduction = () => {
+export const app = (gameParameters) => {
+  const { description, generateQuestion, incorrectAnswer, congratulation } =
+    gameParameters;
+  let countCorrectAnswers = 0;
+
   console.log('Welcome to the Brain Games!');
-  userName = getUserAnswer('May I have your name? ');
+  const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}`);
-};
+  console.log(`${description}`);
 
-export const showCongratulation = () => {
-  console.log(`Congratulations, ${userName}!`);
-};
-
-export const showWrongAnswerCalc = (userAnswer, answer) => {
-  console.log(
-    `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'`
-  );
-  console.log(`Let's try again, ${userName}!`);
-};
-
-export const isEven = (number) => number % 2 === 0;
-
-export const generateEquation = () => {
-  const mathSigns = ['+', '-', '*'];
-  const symbol = mathSigns[generateRandomNumber({ maxValue: 3, shift: 0 })];
-  let num1 = 0;
-  let num2 = 0;
-  let result = 0;
-  switch (symbol) {
-    case '+':
-      num1 = generateRandomNumber();
-      num2 = generateRandomNumber();
-      result = num1 + num2;
-      break;
-    case '-':
-      num1 = generateRandomNumber();
-      num2 = generateRandomNumber({ maxValue: num1 });
-      result = num1 - num2;
-      break;
-    case '*':
-      num1 = generateRandomNumber({ maxValue: 50 });
-      num2 = generateRandomNumber({ maxValue: 10 });
-      result = num1 * num2;
-      break;
-    default:
-      num1 = generateRandomNumber();
-      num2 = generateRandomNumber();
-      result = num1 + num2;
-      break;
-  }
-  return [`${num1} ${symbol} ${num2}`, result.toString()];
+  do {
+    const [question, answer] = generateQuestion();
+    console.log(`Questions: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer === answer) {
+      countCorrectAnswers += 1;
+      console.log('Correct!');
+    } else {
+      if (incorrectAnswer.length > 0) {
+        console.log(
+          `${incorrectAnswer
+            .replace('<USER_ANSWER>', userAnswer)
+            .replace('<ANSWER>', answer)
+            .replace('<NAME>', userName)}`
+        );
+      }
+      return;
+    }
+  } while (countCorrectAnswers < numberOfQuestions);
+  console.log(`${congratulation.replace('<NAME>', userName)}`);
 };

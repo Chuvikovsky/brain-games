@@ -1,27 +1,18 @@
-import {
-  showIntroduction,
-  showCongratulation,
-  generateRandomNumber,
-  getUserAnswer,
-  numberQuestions,
-  isEven,
-} from './index.js';
+import { generateRandomNumber, app } from './index.js';
+
+const isEven = (number) => number % 2 === 0;
+
+const createQuestion = () => {
+  const number = generateRandomNumber();
+  const answer = isEven(number) ? 'yes' : 'no';
+  return [number, answer];
+};
 
 export default () => {
-  showIntroduction();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  let countCorrectAnswers = 0;
-  do {
-    const number = generateRandomNumber();
-    const answer = isEven(number) ? 'yes' : 'no';
-    console.log(`Questions: ${number}`);
-    const userAnswer = getUserAnswer('Your answer: ');
-    if (userAnswer === answer) {
-      countCorrectAnswers += 1;
-      console.log('Correct!');
-    } else {
-      return;
-    }
-  } while (countCorrectAnswers < numberQuestions);
-  showCongratulation();
+  app({
+    description: 'Answer "yes" if the number is even, otherwise answer "no".',
+    generateQuestion: createQuestion,
+    incorrectAnswer: '',
+    congratulation: 'Congratulations, <NAME>!',
+  });
 };
