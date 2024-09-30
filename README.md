@@ -8,3 +8,5 @@
 
 [brain-gcd asciinema](https://asciinema.org/a/szSL7SAEWxgIDbTsZ06wFJJwE)
 
+[brain-progression asciinema](https://asciinema.org/a/FoQGzLY7rwhD5Y7IhzzexHW2A)
+
