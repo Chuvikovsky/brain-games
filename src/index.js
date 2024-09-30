@@ -18,14 +18,14 @@ export const app = (gameParameters) => {
 
   do {
     const [question, answer] = generateQuestion();
-    console.log(`Questions: ${question}`);
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
     if (userAnswer === String(answer)) {
       countCorrectAnswers += 1;
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.
-  Let's try again, ${userName}!`);
+Let's try again, ${userName}!`);
       return;
     }
   } while (countCorrectAnswers < numberOfQuestions);
