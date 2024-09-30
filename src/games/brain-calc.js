@@ -28,7 +28,7 @@ const createQuestion = () => {
       result = num1 + num2;
       break;
   }
-  return [`${num1} ${symbol} ${num2}`, result.toString()];
+  return [`${num1} ${symbol} ${num2}`, result];
 };
 
 export default () => {

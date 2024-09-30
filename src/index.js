@@ -21,7 +21,7 @@ export const app = (gameParameters) => {
     const [question, answer] = generateQuestion();
     console.log(`Questions: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer === answer) {
+    if (userAnswer === String(answer)) {
       countCorrectAnswers += 1;
       console.log('Correct!');
     } else {
