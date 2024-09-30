@@ -16,10 +16,9 @@ const createQuestion = () => {
       answer = initialValue + i * difference;
       question = i === 0 ? '..' : `${question} ..`;
     } else {
-      question =
-        i === 0
-          ? `${initialValue + i * difference}`
-          : `${question} ${initialValue + i * difference}`;
+      question = i === 0
+        ? `${initialValue + i * difference}`
+        : `${question} ${initialValue + i * difference}`;
     }
   }
   return [question, answer];
