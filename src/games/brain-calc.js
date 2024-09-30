@@ -35,8 +35,5 @@ export default () => {
   app({
     description: 'What is the result of the expression?',
     generateQuestion: createQuestion,
-    incorrectAnswer: `'<USER_ANSWER>' is wrong answer ;(. Correct answer was '<ANSWER>'.
-Let's try again, <NAME>!`,
-    congratulation: 'Congratulations, <NAME>!',
   });
 };

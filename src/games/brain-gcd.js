@@ -18,8 +18,5 @@ export default () => {
   app({
     description: 'Find the greatest common divisor of given numbers.',
     generateQuestion: createQuestion,
-    incorrectAnswer: `'<USER_ANSWER>' is wrong answer ;(. Correct answer was '<ANSWER>'.
-Let's try again, <NAME>!`,
-    congratulation: 'Congratulations, <NAME>!',
   });
 };

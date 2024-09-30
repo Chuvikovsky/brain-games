@@ -26,8 +26,5 @@ export default () => {
   app({
     description: 'What number is missing in the progression?',
     generateQuestion: createQuestion,
-    incorrectAnswer: `'<USER_ANSWER>' is wrong answer ;(. Correct answer was '<ANSWER>'.
-  Let's try again, <NAME>!`,
-    congratulation: 'Congratulations, <NAME>!',
   });
 };

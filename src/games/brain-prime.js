@@ -18,8 +18,5 @@ export default () => {
     description:
       'Answer "yes" if given number is prime. Otherwise answer "no".',
     generateQuestion: createQuestion,
-    incorrectAnswer: `'<USER_ANSWER>' is wrong answer ;(. Correct answer was '<ANSWER>'.
-  Let's try again, <NAME>!`,
-    congratulation: 'Congratulations, <NAME>!',
   });
 };
