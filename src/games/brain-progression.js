@@ -14,9 +14,12 @@ const createQuestion = () => {
   for (let i = 0; i < numberOfSteps; i += 1) {
     if (i === missingStep) {
       answer = initialValue + i * difference;
-      question = `${question} ..`;
+      question = i === 0 ? '..' : `${question} ..`;
     } else {
-      question = `${question} ${initialValue + i * difference}`;
+      question =
+        i === 0
+          ? `${initialValue + i * difference}`
+          : `${question} ${initialValue + i * difference}`;
     }
   }
   return [question, answer];
