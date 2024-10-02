@@ -4,14 +4,11 @@ const calculateResult = (num1, num2, operand) => {
   let result = 0;
   switch (operand) {
     case '+':
-      result = num1 + num2;
-      break;
+      return num1 + num2;
     case '-':
-      result = num1 - num2;
-      break;
+      return num1 - num2;
     case '*':
-      result = num1 * num2;
-      break;
+      return num1 * num2;
     default:
       result = num1 + num2;
       break;
