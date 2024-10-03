@@ -7,14 +7,12 @@ const generateProgression = (initialValue, difference, missingStep) => {
 
   for (let i = 0; i < numberOfSteps; i += 1) {
     if (i === missingStep) {
-      question = i === 0 ? '..' : `${question} ..`;
+      question = `${question} ..`;
     } else {
-      question = i === 0
-        ? `${initialValue + i * difference}`
-        : `${question} ${initialValue + i * difference}`;
+      question = `${question} ${initialValue + i * difference}`;
     }
   }
-  return question;
+  return question.trim();
 };
 
 const createQuestion = () => {
