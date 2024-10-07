@@ -2,28 +2,26 @@ import { generateRandomNumber, app } from '../index.js';
 
 const numberOfSteps = 10;
 
-const generateProgression = (initialValue, difference, missingStep) => {
-  let question = '';
-
+const generateProgression = (initialValue, difference) => {
+  const progression = [];
   for (let i = 0; i < numberOfSteps; i += 1) {
-    if (i === missingStep) {
-      question = `${question} ..`;
-    } else {
-      question = `${question} ${initialValue + i * difference}`;
-    }
+    progression.push(initialValue + i * difference);
   }
-  return question.trim();
+  return progression;
 };
 
 const createQuestion = () => {
-  const difference = generateRandomNumber({ maxValue: 10 });
+  const difference = generateRandomNumber({ maxValue: 20 });
   const missingStep = generateRandomNumber({
     maxValue: numberOfSteps - 1,
     shift: 0,
   });
   const initialValue = generateRandomNumber({ maxValue: 60 });
+  const progression = generateProgression(initialValue, difference);
+  const missingValue = initialValue + missingStep * difference;
+  progression[missingStep] = '..';
 
-  return [generateProgression(initialValue, difference, missingStep), `${initialValue + missingStep * difference}`];
+  return [progression.join(' '), missingValue];
 };
 
 export default () => {
