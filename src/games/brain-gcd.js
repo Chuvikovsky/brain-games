@@ -10,14 +10,9 @@ const calculateGCD = (number1, number2) => {
 };
 
 const createQuestion = () => {
-  let num1 = generateRandomNumber({ maxValue: 40 })
-    * generateRandomNumber({ maxValue: 2 });
-  let num2 = generateRandomNumber({ maxValue: 30 })
-    * generateRandomNumber({ maxValue: 3 });
+  const num1 = generateRandomNumber();
+  const num2 = generateRandomNumber();
   const question = `${num1} ${num2}`;
-  while (num2 !== 0) {
-    [num1, num2] = [num2, num1 % num2];
-  }
   return [question, calculateGCD(num1, num2)];
 };
 
