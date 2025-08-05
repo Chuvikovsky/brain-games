@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/Chuvikovsky/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Chuvikovsky/frontend-project-44/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d231df47d8d6a9fd0bba/maintainability)](https://codeclimate.com/github/Chuvikovsky/frontend-project-44/maintainability)
 
-### Проект Hexlet "Игры Разума"
+### Проект "Игры Разума"
 
 Пять простых игр в терминале по мотивам популярных мобильных игр.
 
@@ -13,12 +13,12 @@
 ### Установка
 Скопируйте репозиторий на компьютер:
 ```bash
-git clone git@github.com:Chuvikovsky/frontend-project-44.git
+git clone git@github.com:Chuvikovsky/brain-games.git
 ```
 
-Перейдите в папку frontend-project-44
+Перейдите в папку brain-games
 ```bash
-cd frontend-project-44
+cd brain-games
 ```
 
 Установите необходимые зависимости:
@@ -27,11 +27,11 @@ make install
 ```
 
 ### Запуск игры
-Игры можно запустить находясь и папке `frontend-project-44` по команде:
+Игры можно запустить находясь и папке `brain-games` по команде:
 ```bash
 make <GAME_NAME>
 ```
-Игры также можно поставить глобально. После этого они будут доступны в терминале из любого места. Чтобы установить глобально, нужно находясь в папке `frontend-project-44` ввести следующие команды:
+Игры также можно поставить глобально. После этого они будут доступны в терминале из любого места. Чтобы установить глобально, нужно находясь в папке `brain-games` ввести следующие команды:
 ```bash
 make publish
 npm link
